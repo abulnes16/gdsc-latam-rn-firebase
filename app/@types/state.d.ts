@@ -2,9 +2,17 @@
 export {};
 declare global {
   interface GDSC {
-    logo: string;
+    id?: string;
+    logo?: string;
     university: string;
     country: string;
+  }
+
+  interface User {
+    name: string;
+    email: string;
+    createdAt?: string;
+    updatedAt?: string;
   }
 
   interface LoadingState {
@@ -18,7 +26,7 @@ declare global {
   }
 
   interface AuthState extends ErrorState, LoadingState {
-    user: string | null;
+    user: User | null;
     currentUserId: string | undefined;
   }
 

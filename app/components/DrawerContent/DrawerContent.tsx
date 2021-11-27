@@ -6,16 +6,25 @@ import { GDSC_LOGO } from '../../assets/images';
 import { globalStyles } from '../../theme';
 import colors from '../../theme/colors';
 
-const DrawerContent = () => {
+interface Props {
+  logout: () => void;
+  user: User | null;
+}
+
+const DrawerContent = ({ logout, user }: Props) => {
   return (
     <DrawerContentScrollView>
       <View style={styles.avatarContainer}>
         <View style={styles.imageContainer}>
           <Image style={styles.image} resizeMode="contain" source={GDSC_LOGO} />
         </View>
-        <Text style={[globalStyles.text, styles.user]}>Angel Bulnes</Text>
+        <Text style={[globalStyles.text, styles.user]}>{user?.name}</Text>
       </View>
-      <Button style={[globalStyles.buttonColor, styles.button]}>Log out</Button>
+      <Button
+        onPress={logout}
+        style={[globalStyles.buttonColor, styles.button]}>
+        Log out
+      </Button>
     </DrawerContentScrollView>
   );
 };
