@@ -11,9 +11,13 @@ interface Props {
 const LoginForm = ({ onRegister }: Props) => {
   return (
     <Layout style={styles.loginContainer}>
-      <Input style={styles.verticalSpacing} placeholder="Email" size="large" />
       <Input
-        style={styles.verticalSpacing}
+        style={globalStyles.verticalSpacing}
+        placeholder="Email"
+        size="large"
+      />
+      <Input
+        style={globalStyles.verticalSpacing}
         placeholder="Password"
         textContentType="password"
         size="large"
@@ -42,9 +46,6 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 40,
-  },
-  verticalSpacing: {
-    marginVertical: 10,
   },
   registerAction: {
     marginTop: 20,
