@@ -16,4 +16,7 @@ export default StyleSheet.create({
   verticalSpacing: {
     marginVertical: 10,
   },
+  errorText: {
+    color: colors.danger,
+  },
 });

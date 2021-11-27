@@ -3,7 +3,7 @@ import AuthNavigator from './auth/AuthNavigator';
 import HomeNavigator from './home/HomeNavigator';
 
 const MainNavigator = () => {
-  return <HomeNavigator />;
+  return <AuthNavigator />;
 };
 
 export default MainNavigator;
