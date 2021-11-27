@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079289952434",
+    "project_id": "gdsc-latam-rn",
+    "storage_bucket": "gdsc-latam-rn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079289952434:android:6ca0f85be0457f6355f1ab",
+        "android_client_info": {
+          "package_name": "com.gdsclatamrn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079289952434-9os23q7j9vd1muvkpm7a65vhtfioh8je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPVfWifxuIgAsbSwNVWNwJUdQEzs4yOUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079289952434-9os23q7j9vd1muvkpm7a65vhtfioh8je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
