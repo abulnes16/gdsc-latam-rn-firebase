@@ -27,7 +27,7 @@ const HomeScreen = ({ navigation }: Props) => {
         <Icon name="menu" style={styles.menuButton} fill={colors.white} />
       </TouchableOpacity>
       <Text style={[globalStyles.text, styles.title]}>
-        Google Developers Student Clubs
+        Google Latam Conferece GDSC
       </Text>
       {loading ? (
         <ActivityIndicator size="large" color={colors.terciary} />
