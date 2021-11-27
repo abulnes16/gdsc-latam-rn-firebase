@@ -12,7 +12,7 @@ import {
 
 const INITIAL_STATE: AuthState = {
   user: '',
-  currentUserId: '',
+  currentUserId: undefined,
   loading: false,
   error: false,
 };
