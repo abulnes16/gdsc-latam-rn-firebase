@@ -1,14 +1,26 @@
-import React from 'react';
-import { Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useEffect } from 'react';
+import {
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import { Icon } from '@ui-kitten/components';
 import { GDSCItem } from '../../../components';
 import { globalStyles } from '../../../theme';
 import colors from '../../../theme/colors';
 import { HomeScreenProps } from '../../../@types/navigation';
+import useGDSC from '../../../hooks/useGDSC';
 
 interface Props extends HomeScreenProps {}
 
 const HomeScreen = ({ navigation }: Props) => {
+  const { getGDSC, gdsc, loading } = useGDSC();
+
+  useEffect(() => {
+    getGDSC();
+  }, []);
   return (
     <ScrollView style={[globalStyles.screen, styles.container]}>
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
@@ -17,15 +29,13 @@ const HomeScreen = ({ navigation }: Props) => {
       <Text style={[globalStyles.text, styles.title]}>
         Google Developers Student Clubs
       </Text>
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇲🇽" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
-      <GDSCItem name="UNAH-VS" flag="🇭🇳" />
+      {loading ? (
+        <ActivityIndicator size="large" color={colors.terciary} />
+      ) : (
+        gdsc.map(g => (
+          <GDSCItem name={g.university} flag={g.country} key={g.id} />
+        ))
+      )}
     </ScrollView>
   );
 };

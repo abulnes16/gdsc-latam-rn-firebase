@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Input, Button, Text } from '@ui-kitten/components';
-import { StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import { borders, globalStyles } from '../../theme';
 import colors from '../../theme/colors';
 import { useForm, Controller } from 'react-hook-form';
@@ -19,7 +19,7 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const { register } = useAuth();
+  const { register, loading } = useAuth();
 
   const createAccount = (data: Inputs) => {
     // TODO: Integrate firebase auth create user
@@ -80,11 +80,15 @@ const RegisterForm = () => {
       {errors.password && (
         <Text style={globalStyles.errorText}>The password is required</Text>
       )}
-      <Button
-        style={[globalStyles.buttonColor, styles.button]}
-        onPress={handleSubmit(createAccount)}>
-        Register
-      </Button>
+      {loading ? (
+        <ActivityIndicator color={colors.terciary} size="large" />
+      ) : (
+        <Button
+          style={[globalStyles.buttonColor, styles.button]}
+          onPress={handleSubmit(createAccount)}>
+          Register
+        </Button>
+      )}
     </Layout>
   );
 };

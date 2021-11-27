@@ -8,6 +8,9 @@ export const LOG_IN_SUCCESS = 'AUTH/LOG_IN/SUCCESS';
 export const LOG_IN_FAILED = 'AUTH/LOG_IN/FAILED';
 export const LOGOUT = 'AUTH/LOG_OUT';
 export const SET_CURRENT_USER = 'AUTH/CURRENT_USER';
+export const GET_USER_DATA = 'AUTH/GET_USER_DATA';
+export const GET_USER_DATA_SUCCESS = 'AUTH/GET_USER_DATA/SUCCESS';
+export const GET_USER_DATA_FAILED = 'AUTH/GET_USER_DATA/FAILED';
 
 export type RegisterData = {
   name: string;
@@ -28,14 +31,23 @@ export type RegisterAction = {
 export type RegisterSuccessAction = {
   type: typeof REGISTER_SUCCESS;
   payload: {
-    user: string;
+    user: User;
     currentUserId: string;
   };
 };
 
+export type GetUserAction = {
+  type: typeof GET_USER_DATA;
+};
+
+export type GetUserSuccessAction = {
+  type: typeof GET_USER_DATA_SUCCESS;
+  payload: User;
+};
+
 export type SetCurrentUserAction = {
   type: typeof SET_CURRENT_USER;
-  payload: string;
+  payload: string | undefined;
 };
 
 export type LoginAction = {
@@ -55,7 +67,10 @@ export type LogoutAction = {
 };
 
 export type AuthActionFailed = {
-  type: typeof REGISTER_FAILED | typeof LOG_IN_FAILED;
+  type:
+    | typeof REGISTER_FAILED
+    | typeof LOG_IN_FAILED
+    | typeof GET_USER_DATA_FAILED;
   payload: ErrorState;
 };
 
@@ -66,6 +81,8 @@ export type AuthActions =
   | LoginSuccessAction
   | LogoutAction
   | SetCurrentUserAction
+  | GetUserAction
+  | GetUserSuccessAction
   | AuthActionFailed;
 
 export default {
@@ -77,4 +94,7 @@ export default {
   LOG_IN_FAILED,
   LOGOUT,
   SET_CURRENT_USER,
+  GET_USER_DATA,
+  GET_USER_DATA_FAILED,
+  GET_USER_DATA_SUCCESS,
 };

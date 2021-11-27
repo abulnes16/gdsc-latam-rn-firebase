@@ -1,7 +1,12 @@
 import { Button, Input, Layout, Text } from '@ui-kitten/components';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { useAuth } from '../../hooks';
 import { borders, globalStyles } from '../../theme';
 import colors from '../../theme/colors';
@@ -21,7 +26,7 @@ const LoginForm = ({ onRegister }: Props) => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
 
   const signIn = (data: Inputs) => {
     // TODO: Integrate firebase auth
@@ -66,12 +71,16 @@ const LoginForm = ({ onRegister }: Props) => {
       {errors.password && (
         <Text style={globalStyles.errorText}>The password is required</Text>
       )}
-      <Button
-        size="large"
-        style={[globalStyles.buttonColor, styles.button]}
-        onPress={handleSubmit(signIn)}>
-        Log In
-      </Button>
+      {loading ? (
+        <ActivityIndicator color={colors.terciary} size="large" />
+      ) : (
+        <Button
+          size="large"
+          style={[globalStyles.buttonColor, styles.button]}
+          onPress={handleSubmit(signIn)}>
+          Log In
+        </Button>
+      )}
       <View style={styles.registerAction}>
         <Text>Doesn't have an account?</Text>
         <TouchableOpacity onPress={onRegister}>

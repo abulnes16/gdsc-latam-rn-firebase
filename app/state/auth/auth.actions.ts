@@ -1,6 +1,8 @@
 /* Auth Actions */
 
 import {
+  GetUserAction,
+  GET_USER_DATA,
   LoginAction,
   LoginData,
   LOGOUT,
@@ -27,10 +29,18 @@ export function login(payload: LoginData): LoginAction {
   };
 }
 
-export function setCurrentUser(payload: string): SetCurrentUserAction {
+export function setCurrentUser(
+  payload: string | undefined,
+): SetCurrentUserAction {
   return {
     type: SET_CURRENT_USER,
     payload,
+  };
+}
+
+export function getUser(): GetUserAction {
+  return {
+    type: GET_USER_DATA,
   };
 }
 

@@ -17,7 +17,9 @@ const GDSCItem = ({ logo, name, flag }: Props) => {
         source={logo || GDSC_LOGO}
         style={styles.image}
       />
-      <Text style={styles.title}>{name}</Text>
+      <Text style={styles.title} lineBreakMode={'clip'}>
+        {name}
+      </Text>
       <Text style={styles.flag}>{flag}</Text>
     </Layout>
   );
@@ -34,7 +36,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: { width: 50, height: 50, borderRadius: 20 },
-  title: { fontSize: 30, color: 'black', fontWeight: 'bold' },
+  title: {
+    fontSize: 18,
+    flexWrap: 'wrap',
+    color: 'black',
+    fontWeight: 'bold',
+    width: 200,
+  },
   flag: { fontSize: 30 },
 });
 

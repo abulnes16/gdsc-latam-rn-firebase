@@ -5,7 +5,7 @@ import {
   HomeActions,
 } from './home.types';
 
-const INITIAL_STATE: HomeState = {
+const HOME_STATE: HomeState = {
   gdsc: [],
   loading: false,
   error: false,
@@ -14,7 +14,7 @@ const INITIAL_STATE: HomeState = {
 };
 
 export default function reducer(
-  state = INITIAL_STATE,
+  state = HOME_STATE,
   action: HomeActions,
 ): HomeState {
   switch (action.type) {

@@ -1,5 +1,8 @@
 import {
   AuthActions,
+  GET_USER_DATA,
+  GET_USER_DATA_FAILED,
+  GET_USER_DATA_SUCCESS,
   LOGOUT,
   LOG_IN,
   LOG_IN_FAILED,
@@ -11,7 +14,7 @@ import {
 } from './auth.types';
 
 const INITIAL_STATE: AuthState = {
-  user: '',
+  user: null,
   currentUserId: undefined,
   loading: false,
   error: false,
@@ -24,6 +27,7 @@ export default function reducer(
   switch (action.type) {
     case REGISTER:
     case LOG_IN:
+    case GET_USER_DATA:
       return {
         ...state,
         loading: true,
@@ -34,6 +38,14 @@ export default function reducer(
         ...state,
         user,
         currentUserId,
+        loading: false,
+        error: false,
+      };
+    }
+    case GET_USER_DATA_SUCCESS: {
+      return {
+        ...state,
+        user: action.payload,
         loading: false,
         error: false,
       };
@@ -58,7 +70,8 @@ export default function reducer(
         user: null,
       };
     case REGISTER_FAILED:
-    case LOG_IN_FAILED: {
+    case LOG_IN_FAILED:
+    case GET_USER_DATA_FAILED: {
       const { errorMessage, errorTitle } = action.payload;
       return {
         ...state,
