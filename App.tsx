@@ -5,19 +5,23 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 
 import React from 'react';
 import { SafeAreaView } from 'react-native';
+import { Provider } from 'react-redux';
 import MainNavigator from './app/navigation/MainNavigator';
+import store from './app/state';
 import { globalStyles } from './app/theme';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={eva.light}>
-        <SafeAreaView style={globalStyles.screen}>
-          <MainNavigator />
-        </SafeAreaView>
-      </ApplicationProvider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <IconRegistry icons={EvaIconsPack} />
+        <ApplicationProvider {...eva} theme={eva.light}>
+          <SafeAreaView style={globalStyles.screen}>
+            <MainNavigator />
+          </SafeAreaView>
+        </ApplicationProvider>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
